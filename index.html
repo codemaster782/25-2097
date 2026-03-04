@@ -1,183 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>La Bella Italia • Authentic Italian Restaurant</title>
-
-  <!-- Internal CSS -->
-  <style>
-    body {
-      background-color: #f5e6d3;  /* Warm cream color instead of green */
-      font-family: 'Georgia', 'Times New Roman', serif;
-      text-align: center;
-      margin: 0;
-      padding: 20px;
-    }
-
-    /* Internal Paragraph Style */
-    .internal-paragraph {
-      color: #8b4513;  /* Saddle brown */
-      font-weight: bold;
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-
-    /* Internal Highlight for dish names */
-    .internal-highlight {
-      color: #c0392b;  /* Rich red */
-      font-family: 'Brush Script MT', cursive;
-      font-size: 2.2rem;
-      text-shadow: 2px 2px 2px rgba(0,0,0,0.1);
-    }
-
-    /* Internal style for specialty items */
-    .internal-beauty {
-      color: #d35400;  /* Terra cotta orange */
-      font-style: italic;
-      border-bottom: 2px dotted #f1c40f;
-      padding-bottom: 5px;
-      display: inline-block;
-    }
-    
-    /* Container styling */
-    .menu-section {
-      background-color: white;
-      border-radius: 15px;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 800px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    
-    h2 {
-      color: #7d3c1b;
-      border-bottom: 3px solid #e67e22;
-      padding-bottom: 10px;
-      display: inline-block;
-    }
-  </style>
-
-  <!-- External CSS (simulated with style tag for demo) -->
-  <style>
-    /* This represents external CSS */
-    .external-paragraph {
-      color: #27ae60;  /* Olive green */
-      font-size: 1.2rem;
-      background-color: #f9f5e9;
-      padding: 15px;
-      border-radius: 10px;
-      border-left: 5px solid #e67e22;
-    }
-
-    .external-highlight {
-      color: #2980b9;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .external-beauty {
-      color: #16a085;
-      font-size: 1.3rem;
-      font-weight: normal;
-    }
-    
-    .price-tag {
-      color: #c0392b;
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Italian Restaurant · CSS trio</title>
+    <!-- external css (for paragraph 3, highlight 3, building 3) -->
+    <link rel="stylesheet" href="data:text/css;base64,LnAzLWl0YWxpYW4ge2NvbG9yOiBwdXJwbGU7IHRleHQtZGVjb3JhdGlvbjogdW5kZXJsaW5lOyB9CmgxLmV4LWhpbGlnaHQge2NvbG9yOiAjYzE1MjQxOyB9IC8qIHRlcnJhY290YSAqLwpoMy5leC1idWlsZGluZyB7Y29sb3I6ICMxZTg4MTU7IH0gLyogZGVlcCBwaW5lICov">
+    <!-- internal css inside head (paragraph 2, highlight 2, building 2) -->
+    <style>
+        .p2-internal {
+            color: orange;
+            font-weight: bold;
+        }
+        h2.int-highlight {
+            color: #d46b1e; /* warm autumn orange */
+        }
+        h3.int-building {
+            color: #b76e2e; /* umber / terracotta */
+        }
+    </style>
 </head>
+<body style="font-family: 'Segoe UI', 'Georgia', serif; max-width: 700px; margin: 2rem auto; background: #fef9f0; padding: 1.5rem; border-radius: 24px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
 
-<body>
+    <!-- header: la trattoria -->
+    <div style="text-align: center; border-bottom: 2px dashed #c0a080; padding-bottom: 0.5rem; margin-bottom: 2rem;">
+        <span style="font-size: 2.5rem; font-family: 'Brush Script MT', cursive; color: #8b3e2b;">🍝 Mamma mia!</span>
+        <h1 style="margin: 0; color: #4e3620; font-weight: 400;">Ristorante · da Giovanni</h1>
+    </div>
 
-  <div class="menu-section">
-    <h1 style="color: #e67e22; font-size: 3rem; margin-bottom: 0;">🇮🇹 La Bella Italia</h1>
-    <p style="font-style: italic; color: #7f8c8d;">Authentic Italian Cuisine Since 1985</p>
-  </div>
+    <!-- ********** PARAGRAPH SECTION (exactly 3 paragraphs) ********** -->
+    <h2 style="color: #6b4f3a;">❝ Le nostre parole ❞</h2>
 
-  <h2>🍕 Our Story</h2>
+    <!-- Paragraph 1: inline css (blue italics) -->
+    <p style="color: blue; font-style: italic;">🍕 <strong>Paragraph 1</strong> – La pizza napoletana con pomodoro San Marzano, mozzarella di bufala e basilico fresco. (inline: blue italics)</p>
 
-  <!-- Paragraph 1 (Inline CSS) -->
-  <p style="color: #34495e; font-style: italic; background-color: #fdfaf4; padding: 15px; border-radius: 10px; max-width: 800px; margin: 20px auto;">
-    Welcome to La Bella Italia, where Nonna's secret recipes come to life. 
-    Every dish is made with love, using authentic Italian ingredients imported directly from Italy.
-  </p>
+    <!-- Paragraph 2: internal css (orange bold) class="p2-internal" -->
+    <p class="p2-internal">🍝 <strong>Paragraph 2</strong> – Le nostre lasagne al forno, preparate con ragù lentamente e besciamella cremosa. (internal: orange bold)</p>
 
-  <!-- Paragraph 2 (Internal CSS) -->
-  <p class="internal-paragraph" style="max-width: 800px; margin: 20px auto; background-color: #fff3e0; padding: 15px; border-radius: 10px;">
-    From our wood-fired pizzas to homemade pasta, we bring the taste of Tuscany to your table. 
-    Our chefs prepare each meal fresh daily, following traditions passed down through generations.
-  </p>
+    <!-- Paragraph 3: external css (purple underline) class="p3-italian" -->
+    <p class="p3-italian">🍷 <strong>Paragraph 3</strong> – Vini pregiati: Chianti Classico, Barolo e Pinot grigio. (external: purple underline)</p>
 
-  <!-- Paragraph 3 (External CSS) -->
-  <p class="external-paragraph" style="max-width: 800px; margin: 20px auto;">
-    Join us for a culinary journey through Italy. Enjoy our extensive wine selection featuring 
-    regional varieties from Chianti to Barolo, perfectly paired with your meal.
-  </p>
+    <!-- ********** HIGHLIGHT SECTION (three headings h1/h2/h1) ********** -->
+    <h2 style="color: #6b4f3a; margin-top: 2.5rem;">✨ cucina in evidenza</h2>
 
-  <h2>🏆 Signature Dishes</h2>
+    <!-- HIGHLIGHT 1: h1 with inline css (color only? we add also background for "online css" flavour) -->
+    <h1 style="color: #d42975; background-color: #fff1e0; display: inline-block; padding: 0.2rem 0.8rem; border-radius: 30px; font-size: 2rem;">🍅 Highlight 1 · Pomodoro e basilico (inline: hot pink + warm bg)</h1>
 
-  <div style="background-color: #faf3e0; padding: 15px; border-radius: 15px; max-width: 800px; margin: 20px auto;">
-    <p>
-      <span style="font-weight: bold; color: #e67e22;">🍝 Pasta Carbonara</span> 
-      <span class="price-tag"> - $18.90</span><br>
-      <em>Traditional recipe with eggs, pecorino, guanciale, and black pepper</em>
-    </p>
+    <!-- HIGHLIGHT 2: h2 with internal css (class int-highlight) -->
+    <h2 class="int-highlight" style="font-weight: 400; border-left: 5px solid orange; padding-left: 12px;">🧀 Highlight 2 · Parmigiano reggiano 24 mesi (internal: orange tone)</h2>
 
-    <p>
-      <span style="font-weight: bold; color: #e67e22;">🍕 Margherita Pizza</span> 
-      <span class="price-tag"> - $16.90</span><br>
-      <em>San Marzano tomatoes, fresh mozzarella, basil, and extra virgin olive oil</em>
-    </p>
-  </div>
+    <!-- HIGHLIGHT 3: h1 with external css (class ex-highlight) -->
+    <h1 class="ex-highlight" style="font-family: 'Georgia'; font-weight: 300;">🥩 Highlight 3 · Bistecca alla fiorentina (external: terraccotta red)</h1>
 
-  <h2>🌟 Featured Specials (h1)</h2>
+    <!-- ********** BUILDING SECTION (three h3) ********** -->
+    <h2 style="color: #6b4f3a; margin-top: 2.5rem;">🏛️ i nostri locali</h2>
 
-  <!-- Inline -->
-  <h1 style="color: #e67e22; font-size: 2rem; background: linear-gradient(45deg, #f1c40f, #e67e22); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">
-    🦞 Lobster Ravioli
-  </h1>
-  <p class="price-tag">$24.90</p>
+    <!-- BUILDING 1: inline css (color: we choose deep gold) -->
+    <h3 style="color: #b8860b;">🏠 Building 1 · Trattoria degli Angeli (inline: darkgolden)</h3>
 
-  <!-- Internal -->
-  <h1 class="internal-highlight">
-    🍄 Truffle Risotto
-  </h1>
-  <p class="price-tag">$22.90</p>
+    <!-- BUILDING 2: internal css (class int-building) -->
+    <h3 class="int-building">🏘️ Building 2 · Ristorante Piazza Navona (internal: terracotta/umber)</h3>
 
-  <!-- External -->
-  <h1 class="external-highlight">
-    🥩 Osso Buco
-  </h1>
-  <p class="price-tag">$28.90</p>
+    <!-- BUILDING 3: external css (class ex-building) -->
+    <h3 class="ex-building">🏛️ Building 3 · Enoteca Castello (external: deep pine green)</h3>
 
-  <h2>🥗 Menu Categories (h3)</h2>
-
-  <!-- Inline -->
-  <h3 style="color: #27ae60; background-color: #f0f7e8; padding: 10px; border-radius: 25px; display: inline-block; margin: 10px;">
-    Antipasti • Starters
-  </h3>
-
-  <!-- Internal -->
-  <h3 class="internal-beauty" style="display: block; margin: 15px;">
-    Primi • Pasta & Risotto
-  </h3>
-
-  <!-- External -->
-  <h3 class="external-beauty" style="background-color: #fdedd7; padding: 8px 20px; border-radius: 20px; display: inline-block;">
-    Secondi • Main Courses
-  </h3>
-
-  <div style="margin-top: 40px; padding: 20px; background-color: #2c3e50; color: white; border-radius: 15px; max-width: 800px; margin: 40px auto;">
-    <h3 style="color: #f1c40f;">📞 Reserve Your Table</h3>
-    <p style="font-size: 1.2rem;">📍 123 Little Italy Street, New York, NY 10013</p>
-    <p style="font-size: 1.3rem; color: #f1c40f;">☎️ (212) 555-0123</p>
-    <p style="font-style: italic;">Open Daily: 12:00 PM - 11:00 PM</p>
-    <p style="font-size: 1.5rem;">🇮🇹 Buon Appetito! 🇮🇹</p>
-  </div>
-
+    <!-- decorative footer -->
+    <div style="margin-top: 3rem; font-size: 0.9rem; text-align: center; color: #836f56; border-top: 1px solid #e0c6ad; padding-top: 1rem;">
+        ⚡ stili: inline (blu/corsivo · rosa · oro) | internal (arancione/grassetto · arancio caldo · cotto) | external (viola/sottolineato · rosso mattone · verde pino)
+    </div>
 </body>
 </html>
-
