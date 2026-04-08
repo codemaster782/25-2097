@@ -1,500 +1,613 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>CodeShoes | Premium Sneakers & Tech Fusion</title>
-<style>
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, 'Inter', sans-serif;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>SOLELACE | Premium Sneaker Culture + Cart</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
 
+    /* ----- BACKGROUND STYLING (global gradient + modern texture) ----- */
+    body {
+      background: linear-gradient(135deg, #f7f3ee 0%, #e8e0d5 100%);
+      background-attachment: fixed;
+      color: #1f1a17;
+      scroll-behavior: smooth;
+    }
 
-body {
-background: linear-gradient(145deg, #f9f5f0 0%, #eae2d7 100%);
-background-attachment: fixed;
-color: #1e1a17;
-scroll-behavior: smooth;
-}
+    /* ----- CONTAINER STYLING (rounded cards + elegant shadow) ----- */
+    .container {
+      max-width: 1280px;
+      margin: 2rem auto;
+      padding: 2rem 2rem;
+      background: rgba(255, 253, 250, 0.96);
+      backdrop-filter: blur(0px);
+      border-radius: 2rem;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25);
+      transition: all 0.2s;
+      border: 1px solid rgba(255, 215, 180, 0.5);
+    }
 
+    /* ----- MENU BAR (at least 5 items, modern glass style) ----- */
+    .menu-bar {
+      background: #1e1916dd;
+      backdrop-filter: blur(12px);
+      border-radius: 80px;
+      margin: 1.2rem auto;
+      max-width: 1200px;
+      padding: 0.7rem 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+      border: 1px solid #fbc48a;
+      position: relative;
+    }
 
-.container {
-max-width: 1300px;
-margin: 2rem auto;
-padding: 1.8rem 2rem;
-background: rgba(255, 255, 255, 0.92);
-backdrop-filter: blur(0px);
-border-radius: 2rem;
-box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
-transition: all 0.2s ease;
-border: 1px solid rgba(255,255,240,0.6);
-}
+    .menu-bar a {
+      color: #ffefdb;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.7rem 1.5rem;
+      border-radius: 60px;
+      transition: 0.25s;
+      letter-spacing: 0.3px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
 
+    .menu-bar a:hover {
+      background: #f57c2e;
+      color: #1e1a17;
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
 
-.menu-bar {
-background: #1e1a17e6;
-backdrop-filter: blur(12px);
-border-radius: 60px;
-margin: 1rem auto;
-max-width: 1100px;
-padding: 0.8rem 1.5rem;
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-gap: 0.5rem;
-box-shadow: 0 12px 25px rgba(0,0,0,0.1);
-border: 1px solid #ffcd94;
-}
+    /* cart indicator in menu */
+    .cart-icon-wrapper {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+    #cart-count-badge {
+      background-color: #f57c2e;
+      color: white;
+      border-radius: 50%;
+      padding: 0.1rem 0.5rem;
+      font-size: 0.7rem;
+      font-weight: bold;
+      margin-left: 6px;
+      position: absolute;
+      top: -8px;
+      right: -12px;
+    }
 
-.menu-bar a {
-color: #fae7cb;
-text-decoration: none;
-font-weight: 600;
-padding: 0.6rem 1.4rem;
-border-radius: 40px;
-transition: 0.25s;
-letter-spacing: 0.5px;
-font-size: 1.05rem;
-}
+    /* page headers */
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #bc4e2c, #f57c2e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1.2rem;
+      border-left: 6px solid #f57c2e;
+      padding-left: 1.2rem;
+    }
 
-.menu-bar a:hover {
-background: #ffb347;
-color: #1e1a17;
-transform: scale(1.02);
-box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
+    /* 2+ columns layout */
+    .two-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .col {
+      flex: 1;
+      min-width: 240px;
+    }
 
-/* page header */
-.page-title {
-font-size: 2.7rem;
-font-weight: 800;
-background: linear-gradient(135deg, #c2410c, #ff8c42);
--webkit-background-clip: text;
-background-clip: text;
-color: transparent;
-margin-bottom: 1rem;
-border-left: 6px solid #ff7b2c;
-padding-left: 1.2rem;
-}
+    /* image & video grid (containers) */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.8rem;
+      margin: 2rem 0;
+    }
+    .media-card {
+      background: #ffffff;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s;
+      text-align: center;
+      padding: 0.9rem;
+    }
+    .media-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 28px rgba(0,0,0,0.15);
+    }
+    .media-card img, .media-card video {
+      width: 100%;
+      border-radius: 1rem;
+      height: 190px;
+      object-fit: cover;
+      background: #e9e2d9;
+    }
+    .media-card video {
+      background: #2a241f;
+    }
+    .caption {
+      padding-top: 0.7rem;
+      font-weight: 600;
+      color: #2c241e;
+    }
+    .add-to-cart-btn {
+      background: #1e1916;
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 30px;
+      margin-top: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .add-to-cart-btn:hover {
+      background: #f57c2e;
+      transform: scale(1.02);
+    }
 
-/* grid for columns (2+ columns) */
-.two-columns {
-display: flex;
-flex-wrap: wrap;
-gap: 2rem;
-margin: 2rem 0;
-}
-.col {
-flex: 1;
-min-width: 240px;
-}
+    /* full length tables */
+    .full-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.8rem 0;
+      background: #fffbf5;
+      border-radius: 1.2rem;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .full-table th, .full-table td {
+      border: 1px solid #e7cfba;
+      padding: 12px 16px;
+      text-align: left;
+    }
+    .full-table th {
+      background: #ffdec2;
+      color: #3b2a1f;
+      font-weight: 700;
+    }
 
-/* image/video gallery grid */
-.media-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-gap: 1.8rem;
-margin: 2rem 0;
-}
-.media-card {
-background: white;
-border-radius: 1.5rem;
-overflow: hidden;
-box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-transition: 0.2s;
-text-align: center;
-padding: 0.8rem;
-}
-.media-card img, .media-card video {
-width: 100%;
-border-radius: 1rem;
-height: 180px;
-object-fit: cover;
-background: #e9e2d9;
-}
-.media-card video {
-background: #2c241e;
-}
-.caption {
-padding-top: 0.6rem;
-font-weight: 500;
-}
+    /* nested list styling (min 5 items) */
+    .nested-list {
+      background: #fff5ec;
+      padding: 1.2rem 2rem;
+      border-radius: 1.5rem;
+      margin: 1.8rem 0;
+    }
+    .nested-list ul, .nested-list ol {
+      margin-left: 1.6rem;
+    }
+    .nested-list li {
+      margin: 0.6rem 0;
+    }
 
-/* full length tables */
-.full-table {
-width: 100%;
-border-collapse: collapse;
-margin: 1.5rem 0;
-background: #fffcf7;
-border-radius: 1.2rem;
-overflow: hidden;
-box-shadow: 0 5px 12px rgba(0,0,0,0.05);
-}
-.full-table th, .full-table td {
-border: 1px solid #e0cfbf;
-padding: 12px 14px;
-text-align: left;
-}
-.full-table th {
-background: #ffd9b5;
-color: #3b2a22;
-font-weight: 700;
-}
+    /* formatted paragraphs */
+    .formatted-para {
+      font-size: 1.05rem;
+      line-height: 1.55;
+      background: #ffffffcc;
+      padding: 1rem 1.3rem;
+      border-radius: 1.2rem;
+      margin: 1rem 0;
+      border-left: 5px solid #f57c2e;
+      font-weight: 450;
+    }
 
-/* nested list styling */
-.nested-list {
-background: #fef3e9;
-padding: 1.2rem 2rem;
-border-radius: 1.5rem;
-margin: 1.5rem 0;
-}
-.nested-list ul, .nested-list ol {
-margin-left: 1.5rem;
-}
-.nested-list li {
-margin: 0.5rem 0;
-}
+    /* footer */
+    .footer {
+      background: #1e1916;
+      color: #f5e2ce;
+      text-align: center;
+      padding: 1.6rem;
+      margin-top: 2rem;
+      border-radius: 2rem 2rem 0 0;
+      font-size: 0.9rem;
+      letter-spacing: 0.4px;
+    }
 
-/* paragraph formatting */
-.formatted-para {
-font-size: 1.05rem;
-line-height: 1.55;
-background: #ffffffcc;
-padding: 1rem 1.2rem;
-border-radius: 1.2rem;
-margin: 1rem 0;
-border-left: 5px solid #ff914d;
-font-weight: 450;
-}
-
-/* footer */
-.footer {
-background: #1e1a17;
-color: #f5e2ce;
-text-align: center;
-padding: 1.5rem;
-margin-top: 2rem;
-border-radius: 2rem 2rem 0 0;
-font-size: 0.9rem;
-letter-spacing: 0.5px;
-}
-
-/* added features: hover card, rotating badge, animated button */
-.feature-badge {
-display: inline-block;
-background: #ff7b2c;
-color: white;
-border-radius: 30px;
-padding: 0.3rem 1rem;
-font-size: 0.8rem;
-margin: 0.4rem 0;
-transition: transform 0.2s;
-}
-.feature-badge:hover {
-transform: rotate(2deg) scale(1.05);
-background: #c2410c;
-}
-.btn-shine {
-background: linear-gradient(90deg, #ff914d, #ff5e00);
-border: none;
-padding: 10px 20px;
-border-radius: 50px;
-color: white;
-font-weight: bold;
-cursor: pointer;
-transition: all 0.2s;
-}
-.btn-shine:hover {
-box-shadow: 0 0 12px #ff914d;
-transform: translateY(-2px);
-}
-
-hr {
-margin: 1rem 0;
-border-color: #ffcf9a;
-}
-
-@media (max-width: 750px) {
-.container { padding: 1rem; }
-.menu-bar a { padding: 0.4rem 0.9rem; font-size: 0.85rem; }
-.page-title { font-size: 1.8rem; }
-}
-</style>
+    /* added features: badge, animated button, hover shine */
+    .feature-badge {
+      display: inline-block;
+      background: #f57c2e;
+      color: white;
+      border-radius: 40px;
+      padding: 0.3rem 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      transition: all 0.2s;
+    }
+    .feature-badge:hover {
+      transform: scale(1.05);
+      background: #bc4e2c;
+      box-shadow: 0 2px 8px #f57c2e;
+    }
+    .btn-shine {
+      background: linear-gradient(95deg, #f57c2e, #e05a1a);
+      border: none;
+      padding: 10px 24px;
+      border-radius: 40px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-shine:hover {
+      box-shadow: 0 0 12px #f57c2e;
+      transform: translateY(-2px);
+    }
+    
+    /* CART PANEL (additional feature - slide out) */
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      right: -450px;
+      width: 420px;
+      height: 100%;
+      background: #fffef7;
+      box-shadow: -8px 0 30px rgba(0,0,0,0.2);
+      z-index: 1000;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      border-left: 4px solid #f57c2e;
+    }
+    .cart-overlay.open {
+      right: 0;
+    }
+    .cart-header {
+      padding: 1.5rem;
+      background: #1e1916;
+      color: #ffefdb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
+    .cart-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #edd6c0;
+      padding: 0.8rem 0;
+    }
+    .cart-item-info {
+      flex: 2;
+    }
+    .cart-item-price {
+      font-weight: bold;
+    }
+    .remove-item {
+      background: #e05a1a;
+      border: none;
+      color: white;
+      border-radius: 20px;
+      padding: 4px 10px;
+      cursor: pointer;
+    }
+    .cart-total {
+      padding: 1.2rem;
+      background: #fef0e4;
+      font-weight: bold;
+      font-size: 1.2rem;
+      text-align: center;
+      border-top: 2px solid #f57c2e;
+    }
+    .checkout-btn {
+      background: #f57c2e;
+      width: 90%;
+      margin: 1rem auto;
+      padding: 12px;
+      border: none;
+      border-radius: 40px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .cart-icon {
+      cursor: pointer;
+      background: #f57c2e20;
+      border-radius: 40px;
+      padding: 0.3rem 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    hr {
+      margin: 1rem 0;
+      border-color: #ffcf9a;
+    }
+    @media (max-width: 760px) {
+      .container { padding: 1.2rem; }
+      .menu-bar a { padding: 0.4rem 0.9rem; font-size: 0.8rem; }
+      .page-title { font-size: 1.8rem; }
+      .cart-overlay { width: 100%; right: -100%; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ========================= MENU BAR (at least 5 items) ========================= -->
+<!-- =========== MENU BAR (6 items + cart icon as additional feature) =========== -->
 <div class="menu-bar">
-<a href="#home" onclick="showPage('home')">🏠 HOME</a>
-<a href="#about" onclick="showPage('about')">📖 ABOUT US</a>
-<a href="#contact" onclick="showPage('contact')">📞 CONTACT</a>
-<a href="#collections" onclick="showPage('collections')">👟 COLLECTIONS</a>
-<a href="#techfit" onclick="showPage('techfit')">⚡ TECH+FIT</a>
-<a href="#reviews" onclick="showPage('reviews')">⭐ REVIEWS</a>
+  <a onclick="showPage('home')">🏠 HOME</a>
+  <a onclick="showPage('about')">👟 ABOUT US</a>
+  <a onclick="showPage('contact')">📞 CONTACT</a>
+  <a onclick="showPage('collection')">🔥 DROPS</a>
+  <a onclick="showPage('tech')">⚡ SNEAKER LAB</a>
+  <a onclick="showPage('reviews')">⭐ REVIEWS</a>
+  <div class="cart-icon-wrapper">
+    <div class="cart-icon" onclick="toggleCart()">
+      🛒 CART <span id="cart-count-badge">0</span>
+    </div>
+  </div>
 </div>
 
-<!-- ========================= MAIN CONTENT: PAGES CONTAINER ========================= -->
+<!-- =========== MAIN PAGE CONTAINER =========== -->
 <div id="page-container">
-<!-- HOME PAGE (default active) -->
-<div id="home-page" class="container" style="display: block;">
-<h1 class="page-title">🚀 CodeShoes – Where Innovation Meets Stride</h1>
-<!-- 2 COLUMNS layout (minimum 2 columns) -->
-<div class="two-columns">
-<div class="col">
-<h2>✨ Smart Sneaker Vision</h2>
-<p class="formatted-para">CodeShoes blends high-performance athletic wear with embedded tech. Each pair tracks your steps, posture, and even suggests training routines via our AI assistant. Experience the future of footwear today.</p>
-<div class="feature-badge">🔥 Limited Edition Drop</div>
-<button class="btn-shine" onclick="alert('Launch alert! Stay tuned for exclusive early access.')">🔔 Notify Me</button>
-</div>
-<div class="col">
-<h2>📊 Why Choose Us</h2>
-<p class="formatted-para">We craft durable, stylish sneakers with adaptive cushioning, waterproof nanocoating, and real-time fitness metrics. Join 10k+ active athletes worldwide.</p>
-</div>
+  <!-- HOME PAGE (default) -->
+  <div id="home-page" class="container" style="display: block;">
+    <h1 class="page-title">👟 SOLELACE – Where Sneakers Meet Soul</h1>
+    <div class="two-columns">
+      <div class="col">
+        <h2>✨ The Future of Kicks</h2>
+        <p class="formatted-para">Solelace redefines streetwear with handcrafted leather, breathable mesh, and responsive cushioning. Every pair tells a story — from the design studio to the city asphalt.</p>
+        <div class="feature-badge">🎯 Limited Artist Series</div>
+        <button class="btn-shine" onclick="alert('🔥 Exclusive early access! Join our waitlist for limited sneakers.')">🔔 Notify Me</button>
+      </div>
+      <div class="col">
+        <h2>🏆 Why Solelace?</h2>
+        <p class="formatted-para">Premium materials, sustainable production, and bold silhouettes. Trusted by skaters, runners, and style icons worldwide. 30-day comfort guarantee.</p>
+      </div>
+    </div>
+
+    <h2>📸 Latest Sneaker Culture & Drops</h2>
+    <div class="media-grid">
+      <div class="media-card"><img src="https://picsum.photos/id/1/300/200" alt="sneaker urban"><div class="caption">Urban Pulse "Concrete" - $129</div><button class="add-to-cart-btn" data-name="Urban Pulse Concrete" data-price="129">Add to Cart 🛒</button></div>
+      <div class="media-card"><img src="https://picsum.photos/id/20/300/200" alt="classic white"><div class="caption">Archive 001 "Cream" - $149</div><button class="add-to-cart-btn" data-name="Archive 001 Cream" data-price="149">Add to Cart 🛒</button></div>
+      <div class="media-card"><img src="https://picsum.photos/id/26/300/200" alt="neon edition"><div class="caption">Neon Racer X - $159</div><button class="add-to-cart-btn" data-name="Neon Racer X" data-price="159">Add to Cart 🛒</button></div>
+      <div class="media-card"><video controls muted loop poster="https://picsum.photos/id/13/300/200"><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"></video><div class="caption">Unboxing: Solelace 2K</div><button class="add-to-cart-btn" data-name="Solelace 2K" data-price="179">Add to Cart 🛒</button></div>
+      <div class="media-card"><video controls muted loop><source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4"></video><div class="caption">Behind the sole tech</div><button class="add-to-cart-btn" data-name="Tech Sneaker Lab" data-price="199">Add to Cart 🛒</button></div>
+      <div class="media-card"><video controls muted><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"></video><div class="caption">Streetwear styling video</div><button class="add-to-cart-btn" data-name="Styling Edition" data-price="139">Add to Cart 🛒</button></div>
+    </div>
+
+    <h2>📊 Sizing & Performance Guide</h2>
+    <table class="full-table">
+      <thead><tr><th>Model</th><th>US Men/Women</th><th>Tech Cushion</th><th>Price</th></tr></thead>
+      <tbody><tr><td>Solelace Vortex</td><td>6 - 14</td><td>React+ Foam</td><td>$149</td></tr>
+      <tr><td>Solelace Stitch Racer</td><td>5 - 13</td><td>AirCell Pro</td><td>$189</td></tr></tbody>
+    </table>
+    <table class="full-table">
+      <thead><tr><th>Feature</th><th>Standard Edition</th><th>Premium "Craft"</th></tr></thead>
+      <tbody><tr><td>Upper Material</td><td>Vegan Leather + Mesh</td><td>Italian Nappa + Suede</td></tr>
+      <tr><td>Outsole Grip</td><td>Eco Rubber</td><td>Carbon Rubber + Pattern</td></tr></tbody>
+    </table>
+
+    <div class="nested-list">
+      <h3>🧵 Sneaker Anatomy & Tech</h3>
+      <ul><li>Upper Construction<ul><li>Breathable knit zones</li><li>Reinforced toe cap</li></ul></li>
+      <li>Midsole Tech<ul><li>Energy return foam</li><li>OrthoLite® insole</li></ul></li>
+      <li>Eco initiatives:<ul><li>Recycled polyester laces</li><li>Plastic-free packaging</li></ul></li></ul>
+      <p><strong>Total sustainable materials: 65% recycled content</strong></p>
+    </div>
+    <p class="formatted-para">🌟 Over 12,000+ happy sneakerheads trust Solelace for daily wear and performance.</p>
+    <p class="formatted-para">🎁 Free shipping & returns on all orders. Join the movement.</p>
+  </div>
+
+  <!-- ABOUT US PAGE -->
+  <div id="about-page" class="container" style="display: none;">
+    <h1 class="page-title">👟 About Solelace</h1>
+    <div class="two-columns"><div class="col"><p class="formatted-para">Founded in 2020, Solelace emerged from a collective of sneaker designers and material engineers. We fuse modern aesthetics with biomechanical comfort — because every step matters.</p><p class="formatted-para">Our workshop in Portland, OR, crafts small-batch releases with premium leathers, recycled rubber, and water-based adhesives.</p></div>
+    <div class="col"><img src="https://picsum.photos/id/133/400/260" style="width:100%; border-radius: 1.5rem;" alt="workshop"><p class="caption">Design & prototyping lab</p></div></div>
+    <div class="media-grid"><div class="media-card"><img src="https://picsum.photos/id/42/300/200" alt="factory"><div class="caption">Eco-friendly manufacturing</div></div>
+    <div class="media-card"><img src="https://picsum.photos/id/159/300/200" alt="craftsmanship"><div class="caption">Hand-finished details</div></div>
+    <div class="media-card"><video controls muted><source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4" type="video/mp4"></video><div class="caption">Leather stitching process</div></div>
+    <div class="media-card"><video controls muted><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"></video><div class="caption">Quality control test</div></div></div>
+    <table class="full-table"><tr><th>Year</th><th>Achievement</th></tr><tr><td>2022</td><td>Best Sustainable Footwear - Green Kicks Award</td></tr><tr><td>2024</td><td>Top 50 Emerging Streetwear Brands</td></tr></table>
+  </div>
+
+  <!-- CONTACT PAGE -->
+  <div id="contact-page" class="container" style="display: none;">
+    <h1 class="page-title">📞 Contact Solelace</h1>
+    <div class="two-columns"><div class="col"><p class="formatted-para">📍 Studio: 114 Sneaker Ave, Portland, OR 97205</p><p class="formatted-para">📧 hello@solelace.com  |  ☎️ +1 (503) 555-SOLE</p><button class="btn-shine" onclick="alert('📬 Thank you! Our team will reply within 24h.')">📩 Send Message</button></div>
+    <div class="col"><img src="https://picsum.photos/id/104/400/250" style="width:100%; border-radius: 1.2rem;" alt="store"></div></div>
+    <table class="full-table"><thead><tr><th>Department</th><th>Direct Email</th><th>Response Time</th></tr></thead><tbody><tr><td>Order Support</td><td>orders@solelace.com</td><td>2 hours</td></tr><tr><td>Collaborations</td><td>collab@solelace.com</td><td>1 business day</td></tr></tbody></table>
+    <div class="nested-list"><h3>📱 Social & Community</h3><ul><li>Instagram: @solelace</li><li>TikTok: @solelace.kicks<ul><li>Behind the scenes</li><li>Giveaways</li></ul></li><li>Discord: sneakerhead hub</li><li>Twitter: @solelace_news</li></ul></div>
+  </div>
+
+  <!-- DROPS / COLLECTIONS PAGE -->
+  <div id="collection-page" class="container" style="display: none;">
+    <h1 class="page-title">🔥 Latest Drops & Collections</h1>
+    <p class="formatted-para">Limited edition sneakers dropping each month. Hand-numbered, premium materials.</p>
+    <div class="media-grid"><div class="media-card"><img src="https://picsum.photos/id/13/300/200" alt="drop1"><div class="caption">Sakura Pack "Cherry" - $199</div><button class="add-to-cart-btn" data-name="Sakura Pack Cherry" data-price="199">Add to Cart 🛒</button></div>
+    <div class="media-card"><img src="https://picsum.photos/id/15/300/200" alt="drop2"><div class="caption">Desert Oasis - $179</div><button class="add-to-cart-btn" data-name="Desert Oasis" data-price="179">Add to Cart 🛒</button></div>
+    <div class="media-card"><video controls><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"></video><div class="caption">Lookbook video</div><button class="add-to-cart-btn" data-name="Lookbook Special" data-price="149">Add to Cart 🛒</button></div>
+    <div class="media-card"><video controls><source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4" type="video/mp4"></video><div class="caption">On-foot styling</div><button class="add-to-cart-btn" data-name="On-Foot Styling" data-price="169">Add to Cart 🛒</button></div></div>
+    <div class="feature-badge">⚡ New: Virtual Try-On available</div>
+  </div>
+
+  <!-- SNEAKER LAB / TECH PAGE -->
+  <div id="tech-page" class="container" style="display: none;">
+    <h1 class="page-title">⚡ Solelace Sneaker Lab</h1>
+    <div class="two-columns"><div class="col"><p class="formatted-para">Our R&D team creates next-gen cushioning, custom lasts, and climate-adaptive fabrics.</p><ul class="nested-list" style="background: #fff0e3;"><li>🔬 Impact absorption test</li><li>🧵 3D-knitted uppers</li><li>🌱 Cradle-to-cradle certified soles</li></ul></div>
+    <div class="col"><video controls autoplay muted loop style="width:100%; border-radius: 1.2rem;"><source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4"></video></div></div>
+    <table class="full-table"><tr><th>Prototype</th><th>Tech Specs</th><th>Status</th></tr><tr><td>Adapt 1.0</td><td>Self-molding foam, energy return 92%</td><td>Testing phase</td></tr></table>
+  </div>
+
+  <!-- REVIEWS PAGE -->
+  <div id="reviews-page" class="container" style="display: none;">
+    <h1 class="page-title">⭐ Sneakerhead Reviews</h1>
+    <div class="two-columns"><div class="col"><p class="formatted-para">"Solelace Vortex changed my daily commute — unbelievable comfort and style." — Jamie L.</p><p class="formatted-para">"Best purchase this year. The materials feel premium." — Marcus T.</p></div>
+    <div class="col"><img src="https://picsum.photos/id/22/300/200" style="border-radius: 1rem; width:100%;"></div></div>
+    <div class="media-grid"><div class="media-card"><video controls><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"></video><div class="caption">Video testimonial by runner</div></div>
+    <div class="media-card"><img src="https://picsum.photos/id/155/300/200" alt="reviewpic"><div class="caption">5-star rating on social</div></div></div>
+    <table class="full-table"><tr><th>Platform</th><th>Rating</th><th>Reviews</th></tr><tr><td>Google Reviews</td><td>4.9/5</td><td>2,100+</td></tr><tr><td>Trustpilot</td><td>4.8/5</td><td>980+</td></tr></table>
+    <div class="nested-list"><h4>What our community loves:</h4><ul><li>True-to-size fit</li><li>Durability after 6+ months</li><li>Innovative colorways</li></ul></div>
+  </div>
 </div>
 
-<!-- IMAGES & VIDEOS (minimum 5 images & 5 videos) Home page showcases 3+3, other pages will also include to reach total 5 each across site -->
-<h2>🔥 Latest Drops & Media</h2>
-<div class="media-grid">
-<div class="media-card"><img src="https://picsum.photos/id/20/300/200" alt="sneaker1"><div class="caption">Apex Runner Neon</div></div>
-<div class="media-card"><img src="https://picsum.photos/id/26/300/200" alt="sneaker2"><div class="caption">CyberSole X</div></div>
-<div class="media-card"><img src="https://picsum.photos/id/96/300/200" alt="sneaker3"><div class="caption">Stealth Edition</div></div>
-<div class="media-card"><video controls muted loop><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">Your browser does not support video.</video><div class="caption">Tech Demo: Smart Sole</div></div>
-<div class="media-card"><video controls muted loop><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"></video><div class="caption">Running in 4D</div></div>
-<div class="media-card"><video controls muted><source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4"></video><div class="caption">Behind the Tech</div></div>
+<!-- CART PANEL (additional feature) -->
+<div id="cart-panel" class="cart-overlay">
+  <div class="cart-header"><span>🛒 Your Cart</span><button class="cart-close" onclick="toggleCart()">✖</button></div>
+  <div id="cart-items-list" class="cart-items"><p style="text-align:center; padding:1rem;">Your cart is empty.</p></div>
+  <div class="cart-total">Total: $<span id="cart-total-amount">0</span></div>
+  <button class="checkout-btn" onclick="checkout()">Checkout ✨</button>
 </div>
 
-<!-- TABLES (full length tables at least 2) -->
-<h2>📈 Size & Performance Guide</h2>
-<table class="full-table">
-<thead><tr><th>Model</th><th>US Size</th><th>Tech Rating</th><th>Price</th></tr>
-</thead>
-<tbody>
-<tr><td>CodeShoes X1</td><td>7-13</td><td>⭐ 4.9/5</td><td>$189</td></tr>
-<tr><td>CyberFlex Pro</td><td>6-14</td><td>⭐ 4.8/5</td><td>$229</td></tr>
-</tbody>
-</table>
-<table class="full-table">
-<thead><tr><th>Feature</th><th>Standard</th><th>Pro+</th></tr></thead>
-<tbody>
-<tr><td>Battery Life</td><td>7 days</td><td>14 days</td></tr>
-<tr><td>AI Coaching</td><td>Basic</td><td>Advanced + AR</td></tr>
-</tbody>
-</table>
-
-<!-- Nested list (minimum 5 items total) -->
-<div class="nested-list">
-<h3>📋 Smart Features Breakdown</h3>
-<ul>
-<li>Sensor Suite:
-<ul><li>Pressure mapping (8 zones)</li><li>Gyroscope stability</li></ul>
-</li>
-<li>Connectivity:
-<ul><li>Bluetooth 5.3</li><li>App Sync (iOS/Android)</li></ul>
-</li>
-<li>Eco Materials:
-<ul><li>Recycled knit upper</li><li>Biodegradable foam</li></ul>
-</li>
-</ul>
-<p><em>Total interactive features: 10+ smart integrations.</em></p>
-</div>
-<!-- 5 paragraphs already covered via formatted-para & other pages, but ensure home has at least 2 paragraphs, others will add -->
-<p class="formatted-para">⭐ Limited warranty: 2 years on smart modules and water resistance. Free shipping on orders over $150.</p>
-<p class="formatted-para">🏆 Voted "Most Innovative Footwear 2025" by TechStyle Magazine.</p>
-</div>
-
-<!-- ABOUT US PAGE -->
-<div id="about-page" class="container" style="display: none;">
-<h1 class="page-title">📖 About CodeShoes</h1>
-<div class="two-columns">
-<div class="col">
-<p class="formatted-para">Founded in 2023, CodeShoes originated from a passion to merge software engineering with high-end footwear. Our team of engineers, designers, and biomechanics experts create sneakers that adapt to your movement.</p>
-<p class="formatted-para">We believe in sustainable tech: 40% less carbon footprint per shoe, and fully recyclable packaging. Every pair includes open-source firmware for developers to customize LED patterns and haptic feedback.</p>
-</div>
-<div class="col">
-<img src="https://picsum.photos/id/133/400/250" style="width:100%; border-radius: 24px;" alt="team">
-<p class="caption">Our innovation lab in motion.</p>
-</div>
-</div>
-<!-- additional images & videos to meet 5 images & 5 videos total across site: add 2 more images, 2 more videos -->
-<div class="media-grid">
-<div class="media-card"><img src="https://picsum.photos/id/42/300/200" alt="factory"><div class="caption">Eco manufacturing</div></div>
-<div class="media-card"><img src="https://picsum.photos/id/159/300/200" alt="design"><div class="caption">Design workshop</div></div>
-<div class="media-card"><video controls muted><source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4" type="video/mp4"></video><div class="caption">Behind the seams</div></div>
-<div class="media-card"><video controls muted><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"></video><div class="caption">AI integration demo</div></div>
-</div>
-<h2>🏅 Certifications & Milestones</h2>
-<table class="full-table">
-<tr><th>Year</th><th>Achievement</th></tr>
-<tr><td>2024</td><td>Red Dot Design Award</td></tr>
-<tr><td>2025</td><td>Best Tech Footwear - CES Innovation</td></tr>
-</table>
-<p class="formatted-para">Our commitment: open-source communities and inclusive sizing for all athletes.</p>
-</div>
-
-<!-- CONTACT PAGE -->
-<div id="contact-page" class="container" style="display: none;">
-<h1 class="page-title">📞 Contact CodeShoes</h1>
-<div class="two-columns">
-<div class="col">
-<p class="formatted-para">📍 Global HQ: 123 Innovation Drive, Silicon Valley, CA 94025</p>
-<p class="formatted-para">📧 support@codeshoes.com | ☎️ +1 (800) 987-CODE</p>
-<p class="formatted-para">🕒 Mon-Fri: 9AM - 7PM PST | Sat: 10AM - 4PM</p>
-<button class="btn-shine" onclick="alert('Thank you! Our team will respond within 24h.')">✉️ Send Inquiry</button>
-</div>
-<div class="col">
-<img src="https://picsum.photos/id/104/400/250" style="width:100%; border-radius: 1.5rem;" alt="office">
-</div>
-</div>
-<h2>📋 Support Channels</h2>
-<table class="full-table">
-<thead><tr><th>Department</th><th>Direct Contact</th><th>Response Time</th></tr></thead>
-<tbody>
-<tr><td>Sales & Pre-order</td><td>sales@codeshoes.com</td><td>2 hours</td></tr>
-<tr><td>Tech Support</td><td>tech@codeshoes.com</td><td>4 hours</td></tr>
-<tr><td>Partnerships</td><td>partner@codeshoes.com</td><td>1 business day</td></tr>
-</tbody>
-</table>
-
-<div class="nested-list">
-<h3>📱 Connect With Us On Social</h3>
-<ul>
-<li>Instagram: @codeshoes</li>
-<li>Twitter: @codeshoes_tech</li>
-<li>Discord: community hub
-<ul><li>dev-channel</li><li>support-zone</li></ul>
-</li>
-<li>YouTube: CodeShoes Lab</li>
-</ul>
-</div>
-
-<div class="media-grid">
-<div class="media-card"><video controls><source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4"></video><div class="caption">Customer support walkthrough</div></div>
-</div>
-</div>
-
-
-<div id="collections-page" class="container" style="display: none;">
-<h1 class="page-title">👟 Signature Collections</h1>
-<p class="formatted-para">Discover our latest lineup: from retro futuristic to hyper-athletic performance. All models include our proprietary StepSync™ technology.</p>
-<div class="media-grid">
-<div class="media-card"><img src="https://picsum.photos/id/1/300/200" alt="urban"><div class="caption">Urban Stealth</div></div>
-<div class="media-card"><img src="https://picsum.photos/id/13/300/200" alt="vibrant"><div class="caption">Neon Surge</div></div>
-<div class="media-card"><video controls><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"></video><div class="caption">Collection Teaser</div></div>
-<div class="media-card"><video controls><source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4" type="video/mp4"></video><div class="caption">Unboxing Experience</div></div>
-</div>
-<table class="full-table">
-<tr><th>Collection</th><th>Tech Core</th><th>Price Range</th></tr>
-<tr><td>CyberCode</td><td>AI coaching, LED mesh</td><td>$199 - $279</td></tr>
-<tr><td>EcoRide</td><td>Recycled ocean plastics, self-lacing</td><td>$159 - $229</td></tr>
-</table>
-<div class="feature-badge">✨ New: AR Try-On available now</div>
-</div>
-
-<!-- TECH+FIT PAGE (additional features + aesthetics) -->
-<div id="techfit-page" class="container" style="display: none;">
-<h1 class="page-title">⚡ Tech+Fit Ecosystem</h1>
-<div class="two-columns">
-<div class="col">
-<p class="formatted-para">Integrate your shoes with our wearable app: live biomechanics, foot strike analysis, and personalized coaching plans. CodeShoes API available for developers.</p>
-<ul class="nested-list" style="list-style-type: disc; background: transparent;">
-<li>📊 Real-time step cadence</li>
-<li>🔋 Power harvesting via walking</li>
-<li>🎨 Customizable RGB zones</li>
-</ul>
-</div>
-<div class="col">
-<video controls autoplay muted loop style="width:100%; border-radius: 1.2rem;"><source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4"></video>
-<p class="caption">Interactive dashboard preview</p>
-</div>
-</div>
-<table class="full-table">
-<tr><th>Firmware Version</th><th>Features</th><th>Compatibility</th></tr>
-<tr><td>v2.3.0</td><td>Heart rate estimation, fall detection</td><td>iOS 15+, Android 12+</td></tr>
-</table>
-</div>
-
-
-<div id="reviews-page" class="container" style="display: none;">
-<h1 class="page-title">⭐ Customer Reviews & Testimonials</h1>
-<div class="two-columns">
-<div class="col">
-<p class="formatted-para">"The CodeShoes X1 changed my running routine. The real-time form correction helped me avoid injury. 10/10." — Sarah K.</p>
-<p class="formatted-para">"Sleek design meets advanced tech. I love the haptic navigation feedback during long walks." — Marco D.</p>
-</div>
-<div class="col">
-<img src="https://picsum.photos/id/155/300/200" style="border-radius: 1rem; width:100%;">
-</div>
-</div>
-<div class="media-grid">
-<div class="media-card"><video controls><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"></video><div class="caption">Video review by runner</div></div>
-<div class="media-card"><img src="https://picsum.photos/id/22/300/200" alt="review"><div class="caption">Top-rated comfort</div></div>
-</div>
-<table class="full-table">
-<tr><th>Platform</th><th>Rating</th><th>Verified reviews</th></tr>
-<tr><td>Trustpilot</td><td>4.9 / 5</td><td>2,300+</td></tr>
-<tr><td>Google Reviews</td><td>4.8 / 5</td><td>1,850+</td></tr>
-</table>
-<div class="nested-list">
-<h4>Awards from community:</h4>
-<ul><li>Most Innovative Design 2024</li><li>Best Customer Support in Wearables</li></ul>
-</div>
-</div>
-</div>
-
-
-<div class="footer">
-<p>© 2025 CodeShoes – Innovating every step | Privacy Policy | Terms of Use | #SmartSneakers</p>
-<p>📍 California, USA | 💡 Made with passion for tech & comfort</p>
-</div>
+<!-- FOOTER -->
+<div class="footer"><p>© 2025 SOLELACE — Authentic Sneaker Culture | Sustainable Materials | Worldwide Shipping</p><p>📍 Portland, USA | 💡 Designed for the fearless</p></div>
 
 <script>
-function showPage(pageId) {
-// list of all page divs
-const pages = ['home-page', 'about-page', 'contact-page', 'collections-page', 'techfit-page', 'reviews-page'];
-pages.forEach(page => {
-const el = document.getElementById(page);
-if (el) el.style.display = 'none';
-});
-const activePage = document.getElementById(`${pageId}-page`);
-if (activePage) activePage.style.display = 'block';
-else {
-
-document.getElementById('home-page').style.display = 'block';
-}
-
-window.location.hash = pageId;
-}
-
-
-function loadInitialPage() {
-const hash = window.location.hash.substring(1);
-const validPages = ['home', 'about', 'contact', 'collections', 'techfit', 'reviews'];
-if (validPages.includes(hash)) {
-showPage(hash);
-} else {
-showPage('home');
-}
-}
-
-
-window.addEventListener('hashchange', () => {
-const hash = window.location.hash.substring(1);
-if (['home', 'about', 'contact', 'collections', 'techfit', 'reviews'].includes(hash)) {
-showPage(hash);
-} else {
-showPage('home');
-}
-});
-
-loadInitialPage();
-
-containers, gradients, modern glassmorphis
+  // Cart State
+  let cart = [];
+  
+  function updateCartUI() {
+    const cartItemsDiv = document.getElementById('cart-items-list');
+    const cartCountSpan = document.getElementById('cart-count-badge');
+    const totalSpan = document.getElementById('cart-total-amount');
+    let total = 0;
+    if(cart.length === 0) {
+      cartItemsDiv.innerHTML = '<p style="text-align:center; padding:1rem;">Your cart is empty.</p>';
+      cartCountSpan.innerText = '0';
+      totalSpan.innerText = '0';
+      return;
+    }
+    let html = '';
+    cart.forEach((item, idx) => {
+      total += item.price;
+      html += `<div class="cart-item">
+        <div class="cart-item-info"><strong>${item.name}</strong><br/>$${item.price}</div>
+        <button class="remove-item" data-index="${idx}">Remove</button>
+      </div>`;
+    });
+    cartItemsDiv.innerHTML = html;
+    cartCountSpan.innerText = cart.length;
+    totalSpan.innerText = total;
+    // attach remove events
+    document.querySelectorAll('.remove-item').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const index = parseInt(btn.getAttribute('data-index'));
+        cart.splice(index, 1);
+        updateCartUI();
+        saveCartToLocal();
+      });
+    });
+  }
+  
+  function addToCart(name, price) {
+    cart.push({ name: name, price: price });
+    updateCartUI();
+    saveCartToLocal();
+    // subtle feedback
+    const notif = document.createElement('div');
+    notif.innerText = `➕ ${name} added to cart!`;
+    notif.style.position = 'fixed'; notif.style.bottom = '20px'; notif.style.right = '20px';
+    notif.style.backgroundColor = '#f57c2e'; notif.style.color = 'white'; notif.style.padding = '10px 18px';
+    notif.style.borderRadius = '40px'; notif.style.zIndex = '1100'; notif.style.fontWeight = 'bold';
+    document.body.appendChild(notif);
+    setTimeout(() => notif.remove(), 1800);
+  }
+  
+  function saveCartToLocal() {
+    localStorage.setItem('solelace_cart', JSON.stringify(cart));
+  }
+  
+  function loadCart() {
+    const saved = localStorage.getItem('solelace_cart');
+    if(saved) {
+      try {
+        cart = JSON.parse(saved);
+        updateCartUI();
+      } catch(e) { cart = []; }
+    }
+  }
+  
+  function toggleCart() {
+    document.getElementById('cart-panel').classList.toggle('open');
+  }
+  
+  function checkout() {
+    if(cart.length === 0) { alert('Your cart is empty! Add some sneakers.'); return; }
+    alert(`✅ Thank you for your order! Total: $${cart.reduce((s,i)=>s+i.price,0)}. (Demo checkout)`);
+    cart = [];
+    updateCartUI();
+    saveCartToLocal();
+    toggleCart();
+  }
+  
+  // Attach add to cart listeners to all buttons dynamically (including future content)
+  function bindAddToCartButtons() {
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+      btn.removeEventListener('click', handleAddClick);
+      btn.addEventListener('click', handleAddClick);
+    });
+  }
+  function handleAddClick(e) {
+    const btn = e.currentTarget;
+    const name = btn.getAttribute('data-name');
+    const price = parseInt(btn.getAttribute('data-price'));
+    if(name && price) addToCart(name, price);
+  }
+  
+  // Page switching
+  function showPage(pageId) {
+    const pages = ['home-page', 'about-page', 'contact-page', 'collection-page', 'tech-page', 'reviews-page'];
+    pages.forEach(page => { const el = document.getElementById(page); if(el) el.style.display = 'none'; });
+    const active = document.getElementById(`${pageId}-page`);
+    if(active) active.style.display = 'block';
+    else document.getElementById('home-page').style.display = 'block';
+    window.location.hash = pageId;
+    bindAddToCartButtons(); // rebind after dom change
+  }
+  
+  window.addEventListener('hashchange', () => {
+    const hash = window.location.hash.substring(1);
+    if(['home','about','contact','collection','tech','reviews'].includes(hash)) showPage(hash);
+    else showPage('home');
+  });
+  
+  function initialLoad() {
+    const hash = window.location.hash.substring(1);
+    if(['home','about','contact','collection','tech','reviews'].includes(hash)) showPage(hash);
+    else showPage('home');
+    loadCart();
+    bindAddToCartButtons();
+  }
+  
+  initialLoad();
+  // also watch for dynamically added media-grid changes (no dynamic addition aside from initial, but rebind after any showPage)
+  setInterval(() => bindAddToCartButtons(), 500); // safety rebind
 </script>
-
-
 </body>
 </html>
