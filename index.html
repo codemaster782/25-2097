@@ -1,248 +1,500 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Petit Bistro | Classic French Restaurant</title>
-    <style>
-       
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fef7e8;
-            color: #2c2b28;
-            line-height: 1.5;
-        }
-        h1, h2, h3, h4 {
-            color: #7a2e19;
-            border-bottom: 1px solid #e0c8a5;
-            padding-bottom: 5px;
-        }
-        footer {
-            margin-top: 40px;
-            padding: 15px;
-            background: #e6d5b8;
-            text-align: center;
-            font-size: 0.9em;
-            border-radius: 12px;
-        }
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin: 20px 0;
-            background: #fffaf2;
-        }
-        th, td {
-            border: 2px solid #b28b5e;
-            padding: 10px;
-            text-align: center;
-            vertical-align: middle;
-        }
-        th {
-            background-color: #d9b48b;
-            color: #2c1a0e;
-        }
-        .mark-demo {
-            background-color: #f9f0c1;
-        }
-        blockquote {
-            background: #f3ebdb;
-            border-left: 8px solid #b25d2e;
-            margin: 20px 0;
-            padding: 12px 20px;
-            font-style: italic;
-        }
-        hr {
-            margin: 30px 0;
-            border: 1px solid #c6a27a;
-        }
-        pre {
-            background: #2e2a24;
-            color: #f5e7c8;
-            padding: 15px;
-            border-radius: 8px;
-            font-family: monospace;
-            overflow-x: auto;
-        }
-        .line-break-section p {
-            margin: 8px 0;
-        }
-        del {
-            background-color: #ffe0e0;
-        }
-        mark {
-            background-color: #ffecb3;
-            padding: 0 2px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>CodeShoes | Premium Sneakers & Tech Fusion</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, 'Inter', sans-serif;
+}
+
+
+body {
+background: linear-gradient(145deg, #f9f5f0 0%, #eae2d7 100%);
+background-attachment: fixed;
+color: #1e1a17;
+scroll-behavior: smooth;
+}
+
+
+.container {
+max-width: 1300px;
+margin: 2rem auto;
+padding: 1.8rem 2rem;
+background: rgba(255, 255, 255, 0.92);
+backdrop-filter: blur(0px);
+border-radius: 2rem;
+box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
+transition: all 0.2s ease;
+border: 1px solid rgba(255,255,240,0.6);
+}
+
+
+.menu-bar {
+background: #1e1a17e6;
+backdrop-filter: blur(12px);
+border-radius: 60px;
+margin: 1rem auto;
+max-width: 1100px;
+padding: 0.8rem 1.5rem;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 0.5rem;
+box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+border: 1px solid #ffcd94;
+}
+
+.menu-bar a {
+color: #fae7cb;
+text-decoration: none;
+font-weight: 600;
+padding: 0.6rem 1.4rem;
+border-radius: 40px;
+transition: 0.25s;
+letter-spacing: 0.5px;
+font-size: 1.05rem;
+}
+
+.menu-bar a:hover {
+background: #ffb347;
+color: #1e1a17;
+transform: scale(1.02);
+box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* page header */
+.page-title {
+font-size: 2.7rem;
+font-weight: 800;
+background: linear-gradient(135deg, #c2410c, #ff8c42);
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+margin-bottom: 1rem;
+border-left: 6px solid #ff7b2c;
+padding-left: 1.2rem;
+}
+
+/* grid for columns (2+ columns) */
+.two-columns {
+display: flex;
+flex-wrap: wrap;
+gap: 2rem;
+margin: 2rem 0;
+}
+.col {
+flex: 1;
+min-width: 240px;
+}
+
+/* image/video gallery grid */
+.media-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+gap: 1.8rem;
+margin: 2rem 0;
+}
+.media-card {
+background: white;
+border-radius: 1.5rem;
+overflow: hidden;
+box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+transition: 0.2s;
+text-align: center;
+padding: 0.8rem;
+}
+.media-card img, .media-card video {
+width: 100%;
+border-radius: 1rem;
+height: 180px;
+object-fit: cover;
+background: #e9e2d9;
+}
+.media-card video {
+background: #2c241e;
+}
+.caption {
+padding-top: 0.6rem;
+font-weight: 500;
+}
+
+/* full length tables */
+.full-table {
+width: 100%;
+border-collapse: collapse;
+margin: 1.5rem 0;
+background: #fffcf7;
+border-radius: 1.2rem;
+overflow: hidden;
+box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+}
+.full-table th, .full-table td {
+border: 1px solid #e0cfbf;
+padding: 12px 14px;
+text-align: left;
+}
+.full-table th {
+background: #ffd9b5;
+color: #3b2a22;
+font-weight: 700;
+}
+
+/* nested list styling */
+.nested-list {
+background: #fef3e9;
+padding: 1.2rem 2rem;
+border-radius: 1.5rem;
+margin: 1.5rem 0;
+}
+.nested-list ul, .nested-list ol {
+margin-left: 1.5rem;
+}
+.nested-list li {
+margin: 0.5rem 0;
+}
+
+/* paragraph formatting */
+.formatted-para {
+font-size: 1.05rem;
+line-height: 1.55;
+background: #ffffffcc;
+padding: 1rem 1.2rem;
+border-radius: 1.2rem;
+margin: 1rem 0;
+border-left: 5px solid #ff914d;
+font-weight: 450;
+}
+
+/* footer */
+.footer {
+background: #1e1a17;
+color: #f5e2ce;
+text-align: center;
+padding: 1.5rem;
+margin-top: 2rem;
+border-radius: 2rem 2rem 0 0;
+font-size: 0.9rem;
+letter-spacing: 0.5px;
+}
+
+/* added features: hover card, rotating badge, animated button */
+.feature-badge {
+display: inline-block;
+background: #ff7b2c;
+color: white;
+border-radius: 30px;
+padding: 0.3rem 1rem;
+font-size: 0.8rem;
+margin: 0.4rem 0;
+transition: transform 0.2s;
+}
+.feature-badge:hover {
+transform: rotate(2deg) scale(1.05);
+background: #c2410c;
+}
+.btn-shine {
+background: linear-gradient(90deg, #ff914d, #ff5e00);
+border: none;
+padding: 10px 20px;
+border-radius: 50px;
+color: white;
+font-weight: bold;
+cursor: pointer;
+transition: all 0.2s;
+}
+.btn-shine:hover {
+box-shadow: 0 0 12px #ff914d;
+transform: translateY(-2px);
+}
+
+hr {
+margin: 1rem 0;
+border-color: #ffcf9a;
+}
+
+@media (max-width: 750px) {
+.container { padding: 1rem; }
+.menu-bar a { padding: 0.4rem 0.9rem; font-size: 0.85rem; }
+.page-title { font-size: 1.8rem; }
+}
+</style>
 </head>
 <body>
 
-
-<h1>🍷 Le Petit Bistro</h1>
-<h2>Authentic French Cuisine in the Heart of the City</h2>
-<h3>Est. 1998 | Family Owned Since Three Generations</h3>
-<h4>Seasonal Menu & Artisanal Wine Pairings</h4>
-
-
-<p><strong>Our kitchen embraces farm‑to‑table philosophy, crafting classic coq au vin, bouillabaisse, and crème brûlée using organic ingredients sourced from local producers every morning before service.</strong></p>
-
-<p><u>We invite you to enjoy an intimate dining experience with soft candlelight, hand‑selected wines, and live piano melodies every Friday and Saturday evening from 7 PM.</u></p>
-<p><u>Reservations are highly recommended for dinner service; walk‑ins are welcome based on availability, and private dining options exist for celebrations up to 24 guests.</u></p>
-
-
-<p>Our signature dishes: Coq au Vin<sup>®</sup> | Escargots de Bourgogne<sup>™</sup> | Soupe à l’oignon<sup>★</sup> | Tarte Tatin<sup>◊</sup></p>
-
-
-<p>Chemical balance in sauces: H<sub>2</sub>O for perfect stock, Maillard reaction C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> caramelization, and natural leavening CO<sub>2</sub> in baguettes.</p>
-
-
-<ul>
-    <li>Former lunch special: <del>Roasted chicken with fries – $18.50</del> <strong>Now $15.90</strong></li>
-    <li>Discontinued: <del>Classic Beef Tartare (raw preparation) – $22</del> <em>New steak frites version</em></li>
-    <li>Old wine pairing: <del>2015 Bordeaux blend</del> → 2018 Organic Merlot</li>
-    <li>Past dessert: <del>Chocolate mousse with whipped cream</del> → Vegan dark chocolate mousse</li>
-</ul>
-
-<p><mark>Today's fresh catch: Mediterranean sea bass</mark> | <mark>Gluten‑free baguette available upon request</mark> | <mark>Chef’s tasting menu (5 courses) $68</mark> | <mark>Happy hour 5–7 PM: half‑price oysters</mark></p>
-
-<p>"The escargots were garlicky perfection," raved Michelin inspector.</p>
-<p>"Every bite of the beef bourguignon transported me to Lyon," said food critic Emma Laurent.</p>
-<p>"Our team treats each guest like family," notes Chef Antoine.</p>
-<p>"Don't skip the crème brûlée — it has a legendary caramelized crust," whispers the server.</p>
-
-
-<blockquote>
-    Le Petit Bistro is a tribute to grandmother’s recipes.<br>
-    We simmer stocks for 24 hours, roll puff pastry by hand,<br>
-    and pour wine with generosity. Simplicity meets elegance<br>
-    in every plate — bon appétit!
-</blockquote>
-
-
-<footer>
-    📍 12 Rue de la Gourmandise, Downtown | ☎ +1 (555) 742-8734 | ✉ hello@lepetitbistro.com<br>
-    Open Tue–Sun: Lunch 11:30–2:30, Dinner 5:30–10:00 | © 2025 Le Petit Bistro Family
-</footer>
-
-
-<div class="line-break-section">
-    <p>Enjoy escargot with parsley butter and a crisp Chardonnay.<br>
-    Our sommelier recommends local organic wines with every course.<br>
-    The terrace overlooks the old market square with fairy lights.<br>
-    Children’s menu includes mini ratatouille and homemade apple juice.</p>
+<!-- ========================= MENU BAR (at least 5 items) ========================= -->
+<div class="menu-bar">
+<a href="#home" onclick="showPage('home')">🏠 HOME</a>
+<a href="#about" onclick="showPage('about')">📖 ABOUT US</a>
+<a href="#contact" onclick="showPage('contact')">📞 CONTACT</a>
+<a href="#collections" onclick="showPage('collections')">👟 COLLECTIONS</a>
+<a href="#techfit" onclick="showPage('techfit')">⚡ TECH+FIT</a>
+<a href="#reviews" onclick="showPage('reviews')">⭐ REVIEWS</a>
 </div>
 
+<!-- ========================= MAIN CONTENT: PAGES CONTAINER ========================= -->
+<div id="page-container">
+<!-- HOME PAGE (default active) -->
+<div id="home-page" class="container" style="display: block;">
+<h1 class="page-title">🚀 CodeShoes – Where Innovation Meets Stride</h1>
+<!-- 2 COLUMNS layout (minimum 2 columns) -->
+<div class="two-columns">
+<div class="col">
+<h2>✨ Smart Sneaker Vision</h2>
+<p class="formatted-para">CodeShoes blends high-performance athletic wear with embedded tech. Each pair tracks your steps, posture, and even suggests training routines via our AI assistant. Experience the future of footwear today.</p>
+<div class="feature-badge">🔥 Limited Edition Drop</div>
+<button class="btn-shine" onclick="alert('Launch alert! Stay tuned for exclusive early access.')">🔔 Notify Me</button>
+</div>
+<div class="col">
+<h2>📊 Why Choose Us</h2>
+<p class="formatted-para">We craft durable, stylish sneakers with adaptive cushioning, waterproof nanocoating, and real-time fitness metrics. Join 10k+ active athletes worldwide.</p>
+</div>
+</div>
 
-<p>Our lunch crowd buzzes with energy and fresh baguette aroma.</p>
-<hr>
-<p>Evening transforms the dining room into a romantic hideaway with jazz.</p>
-<hr>
-<p>Weekend brunch features bottomless mimosas and live acoustic guitar.</p>
+<!-- IMAGES & VIDEOS (minimum 5 images & 5 videos) Home page showcases 3+3, other pages will also include to reach total 5 each across site -->
+<h2>🔥 Latest Drops & Media</h2>
+<div class="media-grid">
+<div class="media-card"><img src="https://picsum.photos/id/20/300/200" alt="sneaker1"><div class="caption">Apex Runner Neon</div></div>
+<div class="media-card"><img src="https://picsum.photos/id/26/300/200" alt="sneaker2"><div class="caption">CyberSole X</div></div>
+<div class="media-card"><img src="https://picsum.photos/id/96/300/200" alt="sneaker3"><div class="caption">Stealth Edition</div></div>
+<div class="media-card"><video controls muted loop><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">Your browser does not support video.</video><div class="caption">Tech Demo: Smart Sole</div></div>
+<div class="media-card"><video controls muted loop><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"></video><div class="caption">Running in 4D</div></div>
+<div class="media-card"><video controls muted><source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4"></video><div class="caption">Behind the Tech</div></div>
+</div>
 
-
-<pre>
-    ╔══════════════════════════════════════╗
-    ║   CHEF’S SECRET SPICE BLEND  ║
-    ║   Herbes de Provence + lavender   ║
-    ║   Hand-crushed daily in mortar     ║
-    ╚══════════════════════════════════════╝
-</pre>
-
-
-<h3>Our Wine Selection Highlights</h3>
-<ul>
-    <li>Château Margaux, Bordeaux 2016</li>
-    <li>Sancerre Blanc, Loire Valley</li>
-    <li>Châteauneuf-du-Pape, Rhône blend</li>
-</ul>
-
-
-<h3>Three Steps to Reserve a Table</h3>
-<ol>
-    <li>Call our hostess or book via OpenTable</li>
-    <li>Specify dietary preferences or allergies</li>
-    <li>Arrive 5 minutes early to enjoy an aperitif</li>
-</ol>
-
->
-<h3>Menu Structure (Nested)</h3>
-<ul>
-    <li>Appetizers
-        <ul>
-            <li>Escargots à la Bourguignonne</li>
-            <li>Pâté en Croûte</li>
-        </ul>
-    </li>
-    <li>Main Courses
-        <ul>
-            <li>Coq au Vin</li>
-            <li>Bouillabaisse Marseillaise</li>
-        </ul>
-    </li>
-    <li>Desserts
-        <ul>
-            <li>Crème Brûlée</li>
-            <li>Profiteroles au Chocolat</li>
-        </ul>
-    </li>
-</ul>
-
-
-<h3>Weekly Reservation & Event Calendar</h3>
-<table border="1"> 
-    <caption>📅 Le Petit Bistro — February Reservations & Special Events (Table 10x8)</caption> <!-- 19. caption tag -->
-    <thead>
-        <tr>
-            <th>Time Slot</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th>
-        </tr>
-    </thead>
-    <tbody>
-       
-        <tr><td>11:30 AM</td><td>8 seats</td><td>12 seats</td><td>5 seats</td><td>14 seats</td><td>22 seats</td><td>28 seats</td><td>30 seats</td></tr>
-        
-        <tr><td>1:00 PM</td><td>4 seats</td><td>9 seats</td><td>6 seats</td><td>10 seats</td><td>18 seats</td><td>24 seats</td><td>26 seats</td></tr>
-      
-        <tr><td>5:30 PM</td><td>15 seats</td><td>14 seats</td><td>12 seats</td><td>16 seats</td><td>8 seats</td><td>6 seats</td><td>20 seats</td></tr>
-        
-        <tr><td>7:00 PM</td><td>5 seats</td><td>7 seats</td><td>3 seats</td><td>9 seats</td><td>2 seats</td><td>0 seats</td><td>4 seats</td></tr>
-        
-        <tr><td>8:30 PM</td><td>2 seats</td><td>4 seats</td><td>1 seat</td><td>6 seats</td><td>0 seats</td><td>0 seats</td><td>3 seats</td></tr>
-        
-        <tr>
-            <td rowspan="3">Chef's Table<br>(private dining)</td>
-            <td>Reserved</td><td>Available</td><td>Available</td><td>Reserved</td><td>Booked</td><td>Booked</td><td>Available</td>
-        </tr>
-        <tr>
-           
-            <td>2 seats left</td><td>full expérience</td><td>full expérience</td><td>waitlist</td><td>--</td><td>--</td><td>4 seats</td>
-        </tr>
-        <tr>
-          
-            <td>waitlist</td><td>4 seats left</td><td>6 seats left</td><td>2 seats left</td><td>full</td><td>full</td><td>8 seats left</td>
-        </tr>
-       
-        <tr><td>9:30 PM</td><td>6 seats</td><td>8 seats</td><td>5 seats</td><td>7 seats</td><td>0 seats</td><td>2 seats</td><td>10 seats</td></tr>
-       
-        <tr><td>10:00 PM</td><td>12 seats</td><td>10 seats</td><td>12 seats</td><td>14 seats</td><td>6 seats</td><td>8 seats</td><td>16 seats</td></tr>
-    </tbody>
+<!-- TABLES (full length tables at least 2) -->
+<h2>📈 Size & Performance Guide</h2>
+<table class="full-table">
+<thead><tr><th>Model</th><th>US Size</th><th>Tech Rating</th><th>Price</th></tr>
+</thead>
+<tbody>
+<tr><td>CodeShoes X1</td><td>7-13</td><td>⭐ 4.9/5</td><td>$189</td></tr>
+<tr><td>CyberFlex Pro</td><td>6-14</td><td>⭐ 4.8/5</td><td>$229</td></tr>
+</tbody>
 </table>
-<p><em>Note: Table above demonstrates 10 rows (including rowspan grouping as separate rows) and 8 columns (Time Slot + 7 days). Row span used on "Chef's Table" covering 3 rows. Border and caption applied.</em></p>
+<table class="full-table">
+<thead><tr><th>Feature</th><th>Standard</th><th>Pro+</th></tr></thead>
+<tbody>
+<tr><td>Battery Life</td><td>7 days</td><td>14 days</td></tr>
+<tr><td>AI Coaching</td><td>Basic</td><td>Advanced + AR</td></tr>
+</tbody>
+</table>
 
-<div style="margin-top: 30px;">
-    <h4>🍽️ Chef’s note (line breaks again for clarity)</h4>
-    <p>
-        We prepare stocks from scratch daily.<br>
-        Our pastry chef wakes up at 4 AM for croissants.<br>
-        Every sauce is finished with cold butter.<br>
-        Vegetables come from organic farm “Les Jardins”.
-    </p>
+<!-- Nested list (minimum 5 items total) -->
+<div class="nested-list">
+<h3>📋 Smart Features Breakdown</h3>
+<ul>
+<li>Sensor Suite:
+<ul><li>Pressure mapping (8 zones)</li><li>Gyroscope stability</li></ul>
+</li>
+<li>Connectivity:
+<ul><li>Bluetooth 5.3</li><li>App Sync (iOS/Android)</li></ul>
+</li>
+<li>Eco Materials:
+<ul><li>Recycled knit upper</li><li>Biodegradable foam</li></ul>
+</li>
+</ul>
+<p><em>Total interactive features: 10+ smart integrations.</em></p>
+</div>
+<!-- 5 paragraphs already covered via formatted-para & other pages, but ensure home has at least 2 paragraphs, others will add -->
+<p class="formatted-para">⭐ Limited warranty: 2 years on smart modules and water resistance. Free shipping on orders over $150.</p>
+<p class="formatted-para">🏆 Voted "Most Innovative Footwear 2025" by TechStyle Magazine.</p>
 </div>
 
-<hr>
-<p><small>✓ Complete HTML document with 1 headings(4 levels), bold 30‑word sentence, underlined sentences, sup/sub(4 each), del(4), mark(4), speech marks(4), blockquote(4 lines), footer, line‑break sentences (multiple sets), hr tag usage, pre tag, unordered/ordered/nested lists, table 10x8 with rowspan/caption/border.</small></p>
+<!-- ABOUT US PAGE -->
+<div id="about-page" class="container" style="display: none;">
+<h1 class="page-title">📖 About CodeShoes</h1>
+<div class="two-columns">
+<div class="col">
+<p class="formatted-para">Founded in 2023, CodeShoes originated from a passion to merge software engineering with high-end footwear. Our team of engineers, designers, and biomechanics experts create sneakers that adapt to your movement.</p>
+<p class="formatted-para">We believe in sustainable tech: 40% less carbon footprint per shoe, and fully recyclable packaging. Every pair includes open-source firmware for developers to customize LED patterns and haptic feedback.</p>
+</div>
+<div class="col">
+<img src="https://picsum.photos/id/133/400/250" style="width:100%; border-radius: 24px;" alt="team">
+<p class="caption">Our innovation lab in motion.</p>
+</div>
+</div>
+<!-- additional images & videos to meet 5 images & 5 videos total across site: add 2 more images, 2 more videos -->
+<div class="media-grid">
+<div class="media-card"><img src="https://picsum.photos/id/42/300/200" alt="factory"><div class="caption">Eco manufacturing</div></div>
+<div class="media-card"><img src="https://picsum.photos/id/159/300/200" alt="design"><div class="caption">Design workshop</div></div>
+<div class="media-card"><video controls muted><source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4" type="video/mp4"></video><div class="caption">Behind the seams</div></div>
+<div class="media-card"><video controls muted><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"></video><div class="caption">AI integration demo</div></div>
+</div>
+<h2>🏅 Certifications & Milestones</h2>
+<table class="full-table">
+<tr><th>Year</th><th>Achievement</th></tr>
+<tr><td>2024</td><td>Red Dot Design Award</td></tr>
+<tr><td>2025</td><td>Best Tech Footwear - CES Innovation</td></tr>
+</table>
+<p class="formatted-para">Our commitment: open-source communities and inclusive sizing for all athletes.</p>
+</div>
+
+<!-- CONTACT PAGE -->
+<div id="contact-page" class="container" style="display: none;">
+<h1 class="page-title">📞 Contact CodeShoes</h1>
+<div class="two-columns">
+<div class="col">
+<p class="formatted-para">📍 Global HQ: 123 Innovation Drive, Silicon Valley, CA 94025</p>
+<p class="formatted-para">📧 support@codeshoes.com | ☎️ +1 (800) 987-CODE</p>
+<p class="formatted-para">🕒 Mon-Fri: 9AM - 7PM PST | Sat: 10AM - 4PM</p>
+<button class="btn-shine" onclick="alert('Thank you! Our team will respond within 24h.')">✉️ Send Inquiry</button>
+</div>
+<div class="col">
+<img src="https://picsum.photos/id/104/400/250" style="width:100%; border-radius: 1.5rem;" alt="office">
+</div>
+</div>
+<h2>📋 Support Channels</h2>
+<table class="full-table">
+<thead><tr><th>Department</th><th>Direct Contact</th><th>Response Time</th></tr></thead>
+<tbody>
+<tr><td>Sales & Pre-order</td><td>sales@codeshoes.com</td><td>2 hours</td></tr>
+<tr><td>Tech Support</td><td>tech@codeshoes.com</td><td>4 hours</td></tr>
+<tr><td>Partnerships</td><td>partner@codeshoes.com</td><td>1 business day</td></tr>
+</tbody>
+</table>
+
+<div class="nested-list">
+<h3>📱 Connect With Us On Social</h3>
+<ul>
+<li>Instagram: @codeshoes</li>
+<li>Twitter: @codeshoes_tech</li>
+<li>Discord: community hub
+<ul><li>dev-channel</li><li>support-zone</li></ul>
+</li>
+<li>YouTube: CodeShoes Lab</li>
+</ul>
+</div>
+
+<div class="media-grid">
+<div class="media-card"><video controls><source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4"></video><div class="caption">Customer support walkthrough</div></div>
+</div>
+</div>
+
+
+<div id="collections-page" class="container" style="display: none;">
+<h1 class="page-title">👟 Signature Collections</h1>
+<p class="formatted-para">Discover our latest lineup: from retro futuristic to hyper-athletic performance. All models include our proprietary StepSync™ technology.</p>
+<div class="media-grid">
+<div class="media-card"><img src="https://picsum.photos/id/1/300/200" alt="urban"><div class="caption">Urban Stealth</div></div>
+<div class="media-card"><img src="https://picsum.photos/id/13/300/200" alt="vibrant"><div class="caption">Neon Surge</div></div>
+<div class="media-card"><video controls><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"></video><div class="caption">Collection Teaser</div></div>
+<div class="media-card"><video controls><source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4" type="video/mp4"></video><div class="caption">Unboxing Experience</div></div>
+</div>
+<table class="full-table">
+<tr><th>Collection</th><th>Tech Core</th><th>Price Range</th></tr>
+<tr><td>CyberCode</td><td>AI coaching, LED mesh</td><td>$199 - $279</td></tr>
+<tr><td>EcoRide</td><td>Recycled ocean plastics, self-lacing</td><td>$159 - $229</td></tr>
+</table>
+<div class="feature-badge">✨ New: AR Try-On available now</div>
+</div>
+
+<!-- TECH+FIT PAGE (additional features + aesthetics) -->
+<div id="techfit-page" class="container" style="display: none;">
+<h1 class="page-title">⚡ Tech+Fit Ecosystem</h1>
+<div class="two-columns">
+<div class="col">
+<p class="formatted-para">Integrate your shoes with our wearable app: live biomechanics, foot strike analysis, and personalized coaching plans. CodeShoes API available for developers.</p>
+<ul class="nested-list" style="list-style-type: disc; background: transparent;">
+<li>📊 Real-time step cadence</li>
+<li>🔋 Power harvesting via walking</li>
+<li>🎨 Customizable RGB zones</li>
+</ul>
+</div>
+<div class="col">
+<video controls autoplay muted loop style="width:100%; border-radius: 1.2rem;"><source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4"></video>
+<p class="caption">Interactive dashboard preview</p>
+</div>
+</div>
+<table class="full-table">
+<tr><th>Firmware Version</th><th>Features</th><th>Compatibility</th></tr>
+<tr><td>v2.3.0</td><td>Heart rate estimation, fall detection</td><td>iOS 15+, Android 12+</td></tr>
+</table>
+</div>
+
+
+<div id="reviews-page" class="container" style="display: none;">
+<h1 class="page-title">⭐ Customer Reviews & Testimonials</h1>
+<div class="two-columns">
+<div class="col">
+<p class="formatted-para">"The CodeShoes X1 changed my running routine. The real-time form correction helped me avoid injury. 10/10." — Sarah K.</p>
+<p class="formatted-para">"Sleek design meets advanced tech. I love the haptic navigation feedback during long walks." — Marco D.</p>
+</div>
+<div class="col">
+<img src="https://picsum.photos/id/155/300/200" style="border-radius: 1rem; width:100%;">
+</div>
+</div>
+<div class="media-grid">
+<div class="media-card"><video controls><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"></video><div class="caption">Video review by runner</div></div>
+<div class="media-card"><img src="https://picsum.photos/id/22/300/200" alt="review"><div class="caption">Top-rated comfort</div></div>
+</div>
+<table class="full-table">
+<tr><th>Platform</th><th>Rating</th><th>Verified reviews</th></tr>
+<tr><td>Trustpilot</td><td>4.9 / 5</td><td>2,300+</td></tr>
+<tr><td>Google Reviews</td><td>4.8 / 5</td><td>1,850+</td></tr>
+</table>
+<div class="nested-list">
+<h4>Awards from community:</h4>
+<ul><li>Most Innovative Design 2024</li><li>Best Customer Support in Wearables</li></ul>
+</div>
+</div>
+</div>
+
+
+<div class="footer">
+<p>© 2025 CodeShoes – Innovating every step | Privacy Policy | Terms of Use | #SmartSneakers</p>
+<p>📍 California, USA | 💡 Made with passion for tech & comfort</p>
+</div>
+
+<script>
+function showPage(pageId) {
+// list of all page divs
+const pages = ['home-page', 'about-page', 'contact-page', 'collections-page', 'techfit-page', 'reviews-page'];
+pages.forEach(page => {
+const el = document.getElementById(page);
+if (el) el.style.display = 'none';
+});
+const activePage = document.getElementById(`${pageId}-page`);
+if (activePage) activePage.style.display = 'block';
+else {
+
+document.getElementById('home-page').style.display = 'block';
+}
+
+window.location.hash = pageId;
+}
+
+
+function loadInitialPage() {
+const hash = window.location.hash.substring(1);
+const validPages = ['home', 'about', 'contact', 'collections', 'techfit', 'reviews'];
+if (validPages.includes(hash)) {
+showPage(hash);
+} else {
+showPage('home');
+}
+}
+
+
+window.addEventListener('hashchange', () => {
+const hash = window.location.hash.substring(1);
+if (['home', 'about', 'contact', 'collections', 'techfit', 'reviews'].includes(hash)) {
+showPage(hash);
+} else {
+showPage('home');
+}
+});
+
+loadInitialPage();
+
+containers, gradients, modern glassmorphis
+</script>
+
 
 </body>
 </html>
